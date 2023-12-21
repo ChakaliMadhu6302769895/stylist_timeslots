@@ -80,96 +80,100 @@ class _Stylist2State extends State<Stylist2> {
                 ],
               ),
               Expanded(
-                child: Center(
-                  child: Container(
-                    height: 630,
-                    width: 400,
-                    child: Card(
-                      margin: EdgeInsets.all(20),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Column(
-                              children: [
-                                Text(
-                                  "Hair color Specialist",
-                                  style: GoogleFonts.openSans(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,color: Colors.red
-                                  ),
-                                ),
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(15), // Adjust the radius as needed
-                                  child: Image.asset(
-                                    "assets/haircolor.jpeg",
-                                    height: 100,
-                                    width: 130,
-                                  ),
-                                ),
-                                Text(
-                                  "Mahesh Bhatt",
-                                  style: GoogleFonts.openSans(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(height: 5,),
-                                Divider(
-                                  color: Colors.brown,
-                                  thickness: 2,
-                                  height: 5,
-                                ),
-                              ],
-                            ),
+                child: Column(
+                  children: [
+                    Center(
+                      child: Container(
+                        height: 630,
+                        width: 400,
+                        child: Card(
+                          margin: EdgeInsets.all(20),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
                           ),
-                          Center(
-                            child: Column(
-                              children: [
-                                Text(
-                                  "CHOOSE YOUR DATE",
-                                  style: GoogleFonts.openSans(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 10),
-                          Center(
-                            child: ElevatedButton(
-                              onPressed: () {
-                                _selectDate(context);
-                              },
-                              style: ElevatedButton.styleFrom(
-                                minimumSize: Size(150, 35),
-                                backgroundColor: Colors.brown,
-                              ),
-                              child: Text(
-                                'SELECT DATE',
-                                style: GoogleFonts.openSans(
-                                  fontWeight: FontWeight.bold,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.all(10),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      "Hair color Specialist",
+                                      style: GoogleFonts.openSans(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,color: Colors.red
+                                      ),
+                                    ),
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(15), // Adjust the radius as needed
+                                      child: Image.asset(
+                                        "assets/haircolor.jpeg",
+                                        height: 100,
+                                        width: 130,
+                                      ),
+                                    ),
+                                    Text(
+                                      "Mahesh Bhatt",
+                                      style: GoogleFonts.openSans(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(height: 5,),
+                                    Divider(
+                                      color: Colors.brown,
+                                      thickness: 2,
+                                      height: 5,
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ),
+                              Center(
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      "CHOOSE YOUR DATE",
+                                      style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Center(
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    _selectDate(context);
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    minimumSize: Size(150, 35),
+                                    backgroundColor: Colors.brown,
+                                  ),
+                                  child: Text(
+                                    'SELECT DATE',
+                                    style: GoogleFonts.openSans(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: HorizontalWeekCalendarPackage(
+                                  selectedDate: selectedDate,
+                                  buttonColors: buttonColors,
+                                  onToggleColor: toggleButtonColor,
+                                  key: GlobalKey(),
+                                ),
+                              ),
+                            ],
                           ),
-                          Expanded(
-                            child: HorizontalWeekCalendarPackage(
-                              selectedDate: selectedDate,
-                              buttonColors: buttonColors,
-                              onToggleColor: toggleButtonColor,
-                              key: GlobalKey(),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ),
             ],
