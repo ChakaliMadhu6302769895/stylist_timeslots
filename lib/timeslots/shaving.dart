@@ -53,7 +53,7 @@ class _Stylist3State extends State<Stylist3> {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(top: 10.0),
+                padding: EdgeInsets.only(top: 35),
               ),
               Row(
                 children: [
