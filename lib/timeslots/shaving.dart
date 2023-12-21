@@ -37,31 +37,27 @@ class _Stylist3State extends State<Stylist3> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/background.jpg'),
-                fit: BoxFit.cover,
-              ),
-            ),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/background.jpg'),
+            fit: BoxFit.cover,
           ),
-          Container(
-            decoration: BoxDecoration(
-              color: Color.fromRGBO(255, 255, 255, 0.8),
-            ),
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(255, 255, 255, 0.8),
           ),
-          Column(
+          child: Column(
             children: [
               Padding(
                 padding: EdgeInsets.only(top: 10.0),
               ),
               Row(
                 children: [
-                  Padding(padding: EdgeInsets.only(left: 20.0)),
+                  Padding(padding: EdgeInsets.only(left: 30)),
                   ClipRRect(
                     child: Image.asset(
                       "assets/scissors1removebg.png",
@@ -73,98 +69,112 @@ class _Stylist3State extends State<Stylist3> {
               ),
               Row(
                 children: [
-                  Padding(padding: EdgeInsets.only(left: 22)),
+                  Padding(padding: EdgeInsets.only(left: 24)),
                   Text(
                     "Scissor's",
                     style: GoogleFonts.openSans(
-                        fontSize: 20, fontWeight: FontWeight.bold),
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
-            ],
-          ),
-          Expanded(
-            child: Center(
-              child: Container(
-                height: 630,
-                width: 400,
-                child: Card(
-                  margin: EdgeInsets.all(20),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Column(
-                          children: [
-                            SizedBox(height: 5,),
-                            Text(
-                              "Vinod Shetty the Hairstylist.",
-                              style: GoogleFonts.openSans(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                            Image.asset(
-                              "assets/shaving.jpeg",
-                              height: 100,
-                              width: 100,
-                            ),
-                            Text(
-                              "Shaving",
-                              style: GoogleFonts.openSans(fontSize: 25,fontWeight: FontWeight.bold),
-                            ),
-
-                            Divider(
-                              color: Colors.brown,
-                              thickness: 2,
-                              height: 5,
-                            ),
-                          ],
-                        ),
+              Expanded(
+                child: Center(
+                  child: Container(
+                    height: 630,
+                    width: 400,
+                    child: Card(
+                      margin: EdgeInsets.all(20),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      Center(
-                        child: Column(
-                          children: [
-                            Text("CHOOSE YOUR DATE",
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Column(
+                              children: [
+                                Text(
+                                  "Shaving Specialist",
+                                  style: GoogleFonts.openSans(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,color: Colors.red
+                                  ),
+                                ),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(15), // Adjust the radius as needed
+                                  child: Image.asset(
+                                    "assets/shaving.jpeg",
+                                    height: 100,
+                                    width: 130,
+                                  ),
+                                ),
+                                Text(
+                                  "Vinod Shetty",
+                                  style: GoogleFonts.openSans(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: 5,),
+                                Divider(
+                                  color: Colors.brown,
+                                  thickness: 2,
+                                  height: 5,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Center(
+                            child: Column(
+                              children: [
+                                Text(
+                                  "CHOOSE YOUR DATE",
+                                  style: GoogleFonts.openSans(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Center(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                _selectDate(context);
+                              },
+                              style: ElevatedButton.styleFrom(
+                                minimumSize: Size(150, 35),
+                                backgroundColor: Colors.brown,
+                              ),
+                              child: Text(
+                                'SELECT DATE',
                                 style: GoogleFonts.openSans(
-                                    fontWeight: FontWeight.bold, fontSize: 20)),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Center(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            _selectDate(context);
-                          },
-                          style: ElevatedButton.styleFrom(
-                            minimumSize: Size(150, 35),
-                            backgroundColor: Colors.brown,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
                           ),
-                          child: Text(
-                            'SELECT DATE',
-                            style: GoogleFonts.openSans(fontWeight: FontWeight.bold),
+                          Expanded(
+                            child: HorizontalWeekCalendarPackage(
+                              selectedDate: selectedDate,
+                              buttonColors: buttonColors,
+                              onToggleColor: toggleButtonColor,
+                              key: GlobalKey(),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
-                      Expanded(
-                        child: HorizontalWeekCalendarPackage(
-                          selectedDate: selectedDate,
-                          buttonColors: buttonColors,
-                          onToggleColor: toggleButtonColor,
-                          key: GlobalKey(),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
-            ),
+            ],
           ),
-
-        ],
+        ),
       ),
     );
   }

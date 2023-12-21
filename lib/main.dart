@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:testing2/timeslots/haircolor.dart';
+import 'package:testing2/timeslots/haircut.dart';
+import 'package:testing2/timeslots/shaving.dart';
 import 'hairstylist.dart';
 
 void main() => runApp(MyApp());
@@ -20,47 +23,42 @@ class MyApp extends StatelessWidget {
             ),
           ),
           child: Container(
-            decoration: BoxDecoration(
-                color: Color.fromRGBO(255, 255, 255, 0.8)),
+            decoration:
+                BoxDecoration(color: Color.fromRGBO(255, 255, 255, 0.8)),
             child: ListView(
               children: [
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  // Align to the left
                   children: <Widget>[
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      // Align to the left
-                      children: <Widget>[
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          // Align to the left
-                          children: [
-                            Image.asset("assets/scissors1removebg.png",
-                              height: 100, width: 100,),
-                          ],
-                        ),
-                        Text(
-                          "Scissor's",
-                          style: TextStyle(
-                            fontSize: 19,
-                            fontWeight: FontWeight.bold,
+                    Column(children: [
+                      Row(
+                        children: [
+                          Padding(padding: EdgeInsets.only(left: 30)),
+                          ClipRRect(
+                            child: Image.asset(
+                              "assets/scissors1removebg.png",
+                              height: 80,
+                              width: 80,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Padding(padding: EdgeInsets.only(left: 24)),
+                          Text(
+                            "Scissor's",
+                            style: GoogleFonts.openSans(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                     ]
                     ),
                     Container(
-                      height: MediaQuery
-                          .of(context)
-                          .size
-                          .height,
-                      width: MediaQuery
-                          .of(context)
-                          .size
-                          .width,
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.vertical(
                           top: Radius.circular(50),
@@ -76,14 +74,11 @@ class MyApp extends StatelessWidget {
                             ),
                             Text(
                               'Hair Stylists',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 24,
-                              ),
+                             style: GoogleFonts.openSans(fontWeight: FontWeight.bold,fontSize: 25),
                             ),
-                            StylistCard(stylistData[0]),
-                            StylistCard(stylistData[1]),
-                            StylistCard(stylistData[2]),
+                            StylistCard(stylistData[0], Stylist1()),
+                            StylistCard(stylistData[1], Stylist2()),
+                            StylistCard(stylistData[2], Stylist3()),
                           ],
                         ),
                       ),
@@ -98,25 +93,19 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-// The rest of your code remains unchanged...
 
 class StylistCard extends StatelessWidget {
   final stylist;
+  final Widget stylistScreen;
 
-  StylistCard(this.stylist);
+  StylistCard(this.stylist, this.stylistScreen);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      width: MediaQuery
-          .of(context)
-          .size
-          .width,
-      height: MediaQuery
-          .of(context)
-          .size
-          .height / 4 - 30,
+      margin: EdgeInsets.symmetric(vertical:5),
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height / 4 - 55,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
         color: stylist['bgColor'],
@@ -124,24 +113,21 @@ class StylistCard extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           Positioned(
-
-            top: 10,
-            bottom: 10,
-            right: -60,
-            child: Image.asset(
-              stylist['imgPth'],
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width * 0.40,
-              height: MediaQuery
-                  .of(context)
-                  .size
-                  .height * 0.20,
+            top: 15,
+            bottom: 15,
+            right: 15,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset(
+                stylist['imgPth'],
+                width: MediaQuery.of(context).size.width * 0.40,
+                height: MediaQuery.of(context).size.height * 0.20,
+              ),
             ),
           ),
+
           Padding(
-            padding: EdgeInsets.only(top: 10, left: 30),
+            padding: EdgeInsets.only(top: 20, left: 30),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -149,28 +135,28 @@ class StylistCard extends StatelessWidget {
                   stylist['stylistName'],
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontSize: 17,
+                    fontSize: 18,
                   ),
                 ),
                 SizedBox(
-                  height: 7,
+                  height: 5,
                 ),
                 Text(
                   stylist['salonName'],
                   style: GoogleFonts.openSans(),
                 ),
                 SizedBox(
-                  height: 7,
+                  height: 5,
                 ),
                 Row(
                   children: <Widget>[
                     Icon(
                       Icons.star,
-                      size: 15,
+                      size: 20,
                       color: Color(0xff4E295B),
                     ),
                     SizedBox(
-                      width: 10,
+                      width:5,
                     ),
                     Text(
                       stylist['rating'],
@@ -182,11 +168,16 @@ class StylistCard extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 5,
                 ),
                 MaterialButton(
                   onPressed: () {
-
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => stylistScreen,
+                      ),
+                    );
                   },
                   color: Colors.brown,
                   shape: RoundedRectangleBorder(
@@ -194,8 +185,7 @@ class StylistCard extends StatelessWidget {
                   ),
                   child: const Text(
                     'Book',
-                    style: TextStyle(color: Colors.white,
-                        fontSize: 15),
+                    style: TextStyle(color: Colors.white, fontSize: 15),
                   ),
                 )
               ],
