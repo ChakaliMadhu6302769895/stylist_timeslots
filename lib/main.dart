@@ -106,7 +106,7 @@ class StylistCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical:8),
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height / 4 - 55,
+      height: MediaQuery.of(context).size.height / 4 - 75,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
         color: stylist['bgColor'],
@@ -140,14 +140,7 @@ class StylistCard extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  stylist['salonName'],
-                  style: GoogleFonts.openSans(),
-                ),
-                SizedBox(
-                  height: 5,
+                  height: 10,
                 ),
                 Row(
                   children: <Widget>[
