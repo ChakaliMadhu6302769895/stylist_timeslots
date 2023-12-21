@@ -29,7 +29,8 @@ class MyApp extends StatelessWidget {
               children: [
                 Column(
                   children: <Widget>[
-                    Column(children: [
+                    Column(
+                        children: [
                       Row(
                         children: [
                           Padding(padding: EdgeInsets.only(left: 30)),
@@ -103,7 +104,7 @@ class StylistCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical:5),
+      margin: EdgeInsets.symmetric(vertical:8),
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height / 4 - 55,
       decoration: BoxDecoration(
@@ -152,7 +153,7 @@ class StylistCard extends StatelessWidget {
                   children: <Widget>[
                     Icon(
                       Icons.star,
-                      size: 20,
+                      size: 15,
                       color: Color(0xff4E295B),
                     ),
                     SizedBox(
