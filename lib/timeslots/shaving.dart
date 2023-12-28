@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-class Stylist3 extends StatefulWidget {
+import '../login.dart';
 
+class Stylist3 extends StatefulWidget {
   @override
   _Stylist3State createState() => _Stylist3State();
 }
@@ -69,11 +70,11 @@ class _Stylist3State extends State<Stylist3> {
               ),
               Row(
                 children: [
-                  Padding(padding: EdgeInsets.only(left: 24)),
+                  Padding(padding: EdgeInsets.only(left: 30)),
                   Text(
                     "Scissor's",
                     style: GoogleFonts.openSans(
-                      fontSize: 25,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -99,12 +100,13 @@ class _Stylist3State extends State<Stylist3> {
                                 Text(
                                   "Shaving Specialist",
                                   style: GoogleFonts.openSans(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,color: Colors.red
-                                  ),
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.red),
                                 ),
                                 ClipRRect(
-                                  borderRadius: BorderRadius.circular(15), // Adjust the radius as needed
+                                  borderRadius: BorderRadius.circular(15),
+                                  // Adjust the radius as needed
                                   child: Image.asset(
                                     "assets/shaving.jpeg",
                                     height: 100,
@@ -118,7 +120,9 @@ class _Stylist3State extends State<Stylist3> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                SizedBox(height: 5,),
+                                SizedBox(
+                                  height: 5,
+                                ),
                                 Divider(
                                   color: Colors.brown,
                                   thickness: 2,
@@ -153,7 +157,7 @@ class _Stylist3State extends State<Stylist3> {
                               child: Text(
                                 'SELECT DATE',
                                 style: GoogleFonts.openSans(
-                                  fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.bold,color: Colors.white
                                 ),
                               ),
                             ),
@@ -199,7 +203,8 @@ class _Stylist3State extends State<Stylist3> {
   void toggleButtonColor(String time) {
     DateTime now = DateTime.now();
     if (buttonColors[time] == Colors.red &&
-        (now.difference(buttonSelectionTimes[time]!) < Duration(hours: 1) || now.hour < 12)) {
+        (now.difference(buttonSelectionTimes[time]!) < Duration(hours: 1) ||
+            now.hour < 12)) {
       setState(() {
         buttonColors[time] = Colors.green;
         selectedTimeSlot = '';
@@ -275,7 +280,8 @@ class _HorizontalWeekCalendarPackageState
             style: ElevatedButton.styleFrom(primary: Colors.brown),
             child: Text(
               'BOOK YOUR APPOINTMENT',
-              style: GoogleFonts.openSans(fontWeight: FontWeight.bold),
+              style: GoogleFonts.openSans(fontWeight: FontWeight.bold,color: Colors.white
+              ),
             ),
           ),
         ],
@@ -343,6 +349,16 @@ class _HorizontalWeekCalendarPackageState
         selectedTimeSlots.add(key);
       }
     });
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => LoginPage(
+          selectedDate: widget.selectedDate,
+          selectedTimeSlots: selectedTimeSlots,
+        ),
+      ),
+    );
   }
 
   String formattedDate(DateTime date) {

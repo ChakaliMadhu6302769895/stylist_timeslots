@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-class Stylist1 extends StatefulWidget {
+import '../login.dart';
 
+class Stylist1 extends StatefulWidget {
   @override
   _Stylist1State createState() => _Stylist1State();
 }
@@ -57,7 +58,7 @@ class _Stylist1State extends State<Stylist1> {
               ),
               Row(
                 children: [
-                  Padding(padding: EdgeInsets.only(left:30)),
+                  Padding(padding: EdgeInsets.only(left: 30)),
                   ClipRRect(
                     child: Image.asset(
                       "assets/scissors1removebg.png",
@@ -69,11 +70,11 @@ class _Stylist1State extends State<Stylist1> {
               ),
               Row(
                 children: [
-                  Padding(padding: EdgeInsets.only(left: 24)),
+                  Padding(padding: EdgeInsets.only(left: 30)),
                   Text(
                     "Scissor's",
                     style: GoogleFonts.openSans(
-                      fontSize: 25,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -99,12 +100,13 @@ class _Stylist1State extends State<Stylist1> {
                                 Text(
                                   "Haircut Specialist",
                                   style: GoogleFonts.openSans(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,color: Colors.red
-                                  ),
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.red),
                                 ),
                                 ClipRRect(
-                                  borderRadius: BorderRadius.circular(15), // Adjust the radius as needed
+                                  borderRadius: BorderRadius.circular(15),
+                                  // Adjust the radius as needed
                                   child: Image.asset(
                                     "assets/Scissors hair cut.jpg",
                                     height: 100,
@@ -118,7 +120,9 @@ class _Stylist1State extends State<Stylist1> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                SizedBox(height: 5,),
+                                SizedBox(
+                                  height: 5,
+                                ),
                                 Divider(
                                   color: Colors.brown,
                                   thickness: 2,
@@ -153,8 +157,8 @@ class _Stylist1State extends State<Stylist1> {
                               child: Text(
                                 'SELECT DATE',
                                 style: GoogleFonts.openSans(
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
                               ),
                             ),
                           ),
@@ -199,7 +203,8 @@ class _Stylist1State extends State<Stylist1> {
   void toggleButtonColor(String time) {
     DateTime now = DateTime.now();
     if (buttonColors[time] == Colors.red &&
-        (now.difference(buttonSelectionTimes[time]!) < Duration(hours: 1) || now.hour < 12)) {
+        (now.difference(buttonSelectionTimes[time]!) < Duration(hours: 1) ||
+            now.hour < 12)) {
       setState(() {
         buttonColors[time] = Colors.green;
         selectedTimeSlot = '';
@@ -264,7 +269,7 @@ class _HorizontalWeekCalendarPackageState
           Text(
             "PICK YOUR SLOT",
             style:
-                GoogleFonts.openSans(fontSize: 17, fontWeight: FontWeight.bold),
+            GoogleFonts.openSans(fontSize: 17, fontWeight: FontWeight.bold),
           ),
           buildTimeSlotsColumn(),
           SizedBox(height: 10),
@@ -275,7 +280,8 @@ class _HorizontalWeekCalendarPackageState
             style: ElevatedButton.styleFrom(primary: Colors.brown),
             child: Text(
               'BOOK YOUR APPOINTMENT',
-              style: GoogleFonts.openSans(fontWeight: FontWeight.bold),
+              style: GoogleFonts.openSans(
+                  fontWeight: FontWeight.bold, color: Colors.white),
             ),
           ),
         ],
@@ -316,21 +322,21 @@ class _HorizontalWeekCalendarPackageState
       children: timeSlots
           .map(
             (time) => Column(
-              children: [
-                SizedBox(height: 10),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: widget.buttonColors[time],
-                    fixedSize: Size(100, 35),
-                  ),
-                  onPressed: () {
-                    widget.onToggleColor(time);
-                  },
-                  child: Text(time),
-                ),
-              ],
+          children: [
+            SizedBox(height: 10),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: widget.buttonColors[time],
+                fixedSize: Size(100, 35),
+              ),
+              onPressed: () {
+                widget.onToggleColor(time);
+              },
+              child: Text(time),
             ),
-          )
+          ],
+        ),
+      )
           .toList(),
     );
   }
@@ -343,6 +349,16 @@ class _HorizontalWeekCalendarPackageState
         selectedTimeSlots.add(key);
       }
     });
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => LoginPage(
+          selectedDate: widget.selectedDate,
+          selectedTimeSlots: selectedTimeSlots,
+        ),
+      ),
+    );
   }
 
   String formattedDate(DateTime date) {
