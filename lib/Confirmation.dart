@@ -5,14 +5,17 @@ import 'package:intl/intl.dart';
 class ConfirmationScreen extends StatelessWidget {
   final String name;
   final String phoneNumber;
+  final String stylistName;
   final DateTime selectedDate;
   final List<String> selectedTimeSlots;
 
   const ConfirmationScreen({
     required this.name,
     required this.phoneNumber,
+    required this.stylistName,
     required this.selectedDate,
-    required this.selectedTimeSlots,});
+    required this.selectedTimeSlots,
+  });
 
   String formattedDate(DateTime date) {
     return DateFormat.yMMMMd().format(date);
@@ -131,6 +134,12 @@ class ConfirmationScreen extends StatelessWidget {
                               size: 30,
                               color: Colors.blueGrey,
                             ),
+                            SizedBox(height: 5,),
+                            Text(
+                              'Stylist Name: $stylistName',
+                              style: GoogleFonts.openSans(fontSize: 18,color: Colors.black, fontWeight: FontWeight.bold)
+                            ),
+                            SizedBox(height: 5,),
                             Text('Selected Time Slots: ${selectedTimeSlots.join(",")}',
                               style: GoogleFonts.openSans(
                                 fontSize: 18,
