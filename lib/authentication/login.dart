@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'Confirmation.dart';
+import '../confirmation/Confirmation.dart';
 import 'auth_service.dart';
 
 class LoginPage extends StatefulWidget {

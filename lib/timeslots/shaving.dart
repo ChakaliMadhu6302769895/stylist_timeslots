@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-import '../login.dart';
+import '../authentication/login.dart';
 
 class Stylist3 extends StatefulWidget {
 
